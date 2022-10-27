@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "618575523589",
+    "project_id": "bloc-altosh-authentication",
+    "storage_bucket": "bloc-altosh-authentication.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:618575523589:android:fa48a5eac250b569aa516c",
+        "android_client_info": {
+          "package_name": "com.example.firebase_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "618575523589-dsj5u1kcjodstpv0jtf5f7gahmt7fhs8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWvT0OXRnqRhyCqIU7RX495fMsYo0PBfY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "618575523589-dsj5u1kcjodstpv0jtf5f7gahmt7fhs8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
