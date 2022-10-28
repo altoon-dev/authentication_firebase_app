@@ -10,7 +10,7 @@ abstract class AppState{
 
   const AppState({
       required this.isLoading,
-      required this.authError
+       this.authError
   });
 }
 
@@ -20,7 +20,7 @@ class AppStateLoggedIn extends AppState{
   final Iterable<Reference> images;
   const AppStateLoggedIn({
     required super.isLoading,
-    required super.authError,
+     super.authError,
     required this.user,
     required this.images,
   });
@@ -41,4 +41,41 @@ class AppStateLoggedIn extends AppState{
   @override
   int get hashCode => Object.hash(user.uid, images);
 
+  @override
+  String toString() => 'AppStateLoggedIn, images.length = ${images.length}';
+}
+
+@immutable class AppStateLoggedOut extends AppState{
+  const AppStateLoggedOut({required super.isLoading,  super.authError});
+
+  @override
+  String toString() => 'AppStateLoggedOut, isLoading = $isLoading, authError = $authError';
+}
+
+@immutable
+class AppStateIsInRegistrationView extends AppState{
+  const AppStateIsInRegistrationView({required super.isLoading,  super.authError});
+
+}
+extension GetUser on AppState{
+  User? get user{
+    final cls = this;
+    if(cls is AppStateLoggedIn){
+      return cls.user;
+    }else{
+      return null;
+    }
+  }
+}
+
+
+extension GetImages on AppState{
+  Iterable<Reference>? get images{
+    final cls = this;
+    if(cls is AppStateLoggedIn){
+      return cls.images;
+    }else{
+      return null;
+    }
+  }
 }
