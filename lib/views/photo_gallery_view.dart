@@ -9,7 +9,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 
-
 class PhotoGalleryView extends HookWidget {
   const PhotoGalleryView({Key? key}) : super(key: key);
 
@@ -21,17 +20,25 @@ class PhotoGalleryView extends HookWidget {
       appBar: AppBar(
         title: const Text('Photo Gallery'),
         actions: [
-          IconButton(onPressed: ()async{
-            final image = await picker.pickImage(source: ImageSource.gallery);
-            if(image == null){
-              return;
-            }
-            context.read<AppBloc>().add(AppEventUploadImage(filePathToUpload:  image.path),);
-
-          }, icon: const Icon(Icons.upload,),),
-          const MainPopupMenuButton(
-
+          IconButton(
+            onPressed: () async {
+              final image = await picker.pickImage(
+                source: ImageSource.gallery,
+              );
+              if (image == null) {
+                return;
+              }
+              context.read<AppBloc>().add(
+                AppEventUploadImage(
+                  filePathToUpload: image.path,
+                ),
+              );
+            },
+            icon: const Icon(
+              Icons.upload,
+            ),
           ),
+          const MainPopupMenuButton(),
         ],
       ),
       body: GridView.count(
@@ -39,9 +46,14 @@ class PhotoGalleryView extends HookWidget {
         padding: const EdgeInsets.all(8),
         mainAxisSpacing: 20.0,
         crossAxisSpacing: 20.0,
-        children: images.map(
-            (img) => StorageImageView(image: img,),
-        ).toList()),
+        children: images
+            .map(
+              (img) => StorageImageView(
+            image: img,
+          ),
+        )
+            .toList(),
+      ),
     );
   }
 }

@@ -12,20 +12,25 @@ class RegisterView extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final emailController = useTextEditingController(
-        text: 'abdiramanovaltynbek@gmail.com'.ifDebugging
+      text: 'abdiramanovaltynbek@gmail.com'.ifDebugging,
     );
+
     final passwordController = useTextEditingController(
-        text: 'Daredevil2002'.ifDebugging
+      text: 'Daredevil2002'.ifDebugging,
     );
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Register'),
+        title: const Text(
+          'Register',
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            TextField(controller: emailController,
+            TextField(
+              controller: emailController,
               decoration: const InputDecoration(
                 hintText: 'Enter your email here...',
               ),
@@ -35,20 +40,37 @@ class RegisterView extends HookWidget {
             TextField(
               controller: passwordController,
               decoration: const InputDecoration(
-                hintText: 'Enter your password here...',),
+                hintText: 'Enter your password here...',
+              ),
               keyboardAppearance: Brightness.dark,
               obscureText: true,
-              obscuringCharacter: '🤣',),
-            TextButton(onPressed: (){
-              final email = emailController.text;
-              final password = passwordController.text;
-              context.read<AppBloc>().add(AppEventRegister(email: email, password: password));
-            }, child: const Text('Register',
+              obscuringCharacter: '◉',
             ),
+            TextButton(
+              onPressed: () {
+                final email = emailController.text;
+                final password = passwordController.text;
+                context.read<AppBloc>().add(
+                  AppEventRegister(
+                    email: email,
+                    password: password,
+                  ),
+                );
+              },
+              child: const Text(
+                'Register',
+              ),
             ),
-            TextButton(onPressed: (){
-              context.read<AppBloc>().add(const AppEventGoToLogin());
-            }, child: const Text('Already registered? Log in here!',),),
+            TextButton(
+              onPressed: () {
+                context.read<AppBloc>().add(
+                  const AppEventGoToLogin(),
+                );
+              },
+              child: const Text(
+                'Already registered? Log in here!',
+              ),
+            ),
           ],
         ),
       ),
